@@ -9,9 +9,6 @@ const bodyParser = require('body-parser');
 
 app.use(methodOverride('_method'))
 
-
-
-
 var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
@@ -19,6 +16,8 @@ mongoose.connect('mongodb://localhost/rotten-potatoes');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+// INDEX "/"
 app.get('/', (req, res) => {
   Review.find()
     .then(reviews => {
@@ -29,48 +28,29 @@ app.get('/', (req, res) => {
     })
 })
 
+// REVIEWS
+app.post('/reviews', (req, res) => {
+  Review.create(req.body).then((review) => {
+    console.log(review)
+    res.redirect(`/reviews/${review._id}`)
+  }).catch((err) => {
+    console.log(err.message)
+  })
+})
+
+
+// REVIEWS/NEW
 app.get('/reviews/new', (req, res) => {
   res.render('reviews-new', {});
 })
 
-app.get('/reviews/:id', (req, res) => {
-  res.send('I\'m a review')
-});
 
-app.post('/reviews', (req, res) => {
-  console.log(req.body);
-  // res.render('reviews-new', {});
-})
-
-app.post('/reviews', (req, res) => {
-  Review.create(req.body).then((review) => {
-    console.log(review);
-    res.redirect('/');
-  }).catch((err) => {
-    console.log(err.message);
-  })
-})
-
+// REVIEWS/:ID
 app.get('/reviews/:id', (req, res) => {
   Review.findById(req.params.id).then((review) => {
     res.render('reviews-show', { review: review })
   }).catch((err) => {
     console.log(err.message);
-  })
-})
-
-app.get('/reviews/:id/edit', (req, res) => {
-  Review.findById(req.params.id, function(err, review) {
-    res.render('reviews-edit', {review: review});
-  })
-})
-
-app.post('/reviews', (req, res) => {
-  Review.create(req.body).then((review) => {
-    console.log(review)
-    res.redirect(`/reviews/${review._id}`) // Redirect to reviews/:id
-  }).catch((err) => {
-    console.log(err.message)
   })
 })
 
@@ -83,6 +63,23 @@ app.put('/reviews/:id', (req, res) => {
       console.log(err.message)
     })
 })
+
+app.delete('/reviews/:id', function (req, res) {
+  console.log("DELETE review")
+  Review.findByIdAndRemove(req.params.id).then((review) => {
+    res.redirect('/');
+  }).catch((err) => {
+    console.log(err.message);
+  })
+})
+
+app.get('/reviews/:id/edit', (req, res) => {
+  Review.findById(req.params.id, function(err, review) {
+    res.render('reviews-edit', {review: review});
+  })
+})
+
+
 
 app.listen(3000, () => {
     console.log('App listening on port 3000!')
