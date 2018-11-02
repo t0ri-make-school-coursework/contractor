@@ -1,0 +1,11 @@
+const mongoose = require('mongoose');
+
+const ReviewSchema = new mongoose.Schema({
+  title: String,
+  description: String,
+  movieTitle: String
+})
+
+const Review = mongoose.model('Review', ReviewSchema);
+
+module.exports = Review;
