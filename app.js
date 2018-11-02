@@ -4,11 +4,13 @@ const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const port = process.env.PORT || 3000;
+
 
 const app = express();
 
 // CONNECT TO DB
-mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
 
 // MIDDLEWARE
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -20,6 +22,6 @@ app.use(methodOverride('_method'));
 const reviews = require('./controllers/reviews')(app);
 
 // SERVER
-app.listen(3000);
+app.listen(port);
 
 module.exports = app
