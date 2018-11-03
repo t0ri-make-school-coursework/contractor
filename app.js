@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const port = process.env.PORT || 3000;
+const Review = require('./models/review');
+const Comment = require('./models/comment');
 
 
 const app = express();
@@ -20,6 +22,7 @@ app.use(methodOverride('_method'));
 
 // ROUTES
 const reviews = require('./controllers/reviews')(app);
+const comments = require('./controllers/comments')(app);
 
 // SERVER
 app.listen(port);
