@@ -1,0 +1,49 @@
+<fieldset>
+  <legend>Edit Project</legend>
+  <!-- TITLE -->
+  <div class="form-group">
+    <label for="project-title">Title</label><br>
+    <input class="form-control" id="title" type="text" name="title" value="{{project.title}}"/>
+  </div>
+
+  <div class="form-group">
+    <label for="class">Class Name</label><br>
+    <input class="form-control" id="class" type="text" name="class" value="{{project.class}}"/>
+  </div>
+
+  <!-- SHORT DESC -->
+  <div class="form-group">
+    <label for="short-desc">Short Description</label><br>
+    <input class="form-control" id="short-desc" type="text" name="shortdesc" value="{{project.shortdesc}}" />
+  </div>
+
+  <!-- LONG DESC -->
+  <div class="form-group">
+    <label for="long-desc">Long Description</label><br>
+    <textarea class="form-control" id="long-desc" name="longdesc" rows="10" value="{{project.longdesc}}"/>{{project.longdesc}}</textarea>
+  </div>
+
+  <!-- TECH USED -->
+  <div class="form-group">
+    <label for="tech-used">Technologies Used</label><br>
+    <input class="form-control" id="tech-used" name="tech" value="{{project.tech}}" />
+  </div>
+
+  <!-- LIVE LINK -->
+  <div class="form-group">
+    <label for="live-link">Live Link</label><br>
+    <input class="form-control" id="live-link" name="live" value="{{project.live}}" />
+  </div>
+
+  <!-- REPO LINK -->
+  <div class="form-group">
+    <label for="repo-link">Repository Link</label><br>
+    <input class="form-control" id="repo-link" name="repo" value="{{project.repo}}" />
+  </div>
+
+  <!-- IMAGE LINK -->
+  <div class="form-group">
+    <label for="image-link">Image Link</label><br>
+    <input class="form-control" id="image-link" name="image" value="{{project.image}}" />
+  </div>
+</fieldset>

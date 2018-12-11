@@ -1,0 +1,21 @@
+<h1  style="margin-top:15px;margin-left:28px;margin-bottom:-10px;">Projects</h1>
+
+<div class="row">
+    {{#each projects}}
+        <div class="card" style="width: 18rem; margin: 2.75em;">
+            <img class="card-img-top" src="{{this.image}}" alt="Image of project" width="18em">
+            <div class="card-body">
+                <h5 class="card-title"><a href="/projects/{{this._id}}">{{this.title}}</a></h5>
+                <p class="card-text">{{this.shortdesc}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{this.class}}</li>
+                <li class="list-group-item">{{this.tech}}</li>
+            </ul>
+            <div class="card-body">
+                <a href="{{this.live}}" class="card-link">View Live</a>
+                <a href="{{this.repo}}" class="card-link">View on Github</a>
+            </div>
+        </div>
+    {{/each}}
+</div>

@@ -5,14 +5,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const port = process.env.PORT || 3000;
-const Review = require('./models/review');
-const Comment = require('./models/comment');
+const Project = require('./models/project');
 
 
 const app = express();
 
 // CONNECT TO DB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/projects', { useNewUrlParser: true });
 
 // MIDDLEWARE
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -21,8 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 // ROUTES
-const reviews = require('./controllers/reviews')(app);
-const comments = require('./controllers/comments')(app);
+const projects = require('./controllers/projects')(app);
 
 // SERVER
 app.listen(port);

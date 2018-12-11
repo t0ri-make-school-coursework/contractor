@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-md-12 col-md-offset-3">
+        <div class="text-center" style="margin-top:15px;">
+            <img src="{{project.image}}" alt="Image of project" class="img-fluid rounded" width="50%" height="auto" />
+        </div>
+
+        <h1>{{project.title}}</h1>
+        <p style="margin-top:-10px;color:grey">{{project.class}}</p>
+        <p>{{project.longdesc}}</p>
+        <hr />
+
+
+        <h4>Technologies Used</h4>
+        <p>{{project.tech}}
+
+            <br /><br />
+
+            <a href="{{project.live}}"><button type="button" class="btn btn-outline-primary">View Live</button></a>
+            <a href="{{project.github}}"><button type="button" class="btn btn-outline-primary">View on Github</button></a>
+
+            <div class="admin" style="margin-top:50px;">
+                <p><a href="/projects/{{project._id}}/edit">Edit</a></p>
+
+            </div>
+
+    </div>
+</div>
