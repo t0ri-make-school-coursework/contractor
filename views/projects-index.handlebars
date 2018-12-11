@@ -3,14 +3,14 @@
 <div class="row">
     {{#each projects}}
         <div class="card" style="width: 18rem; margin: 2.75em;">
-            <img class="card-img-top" src="{{this.image}}" alt="Image of project" width="18em">
-            <div class="card-body">
+            <img class="card-img-top" src="{{this.image}}" alt="Image of project" height="150px" width="auto">
+            <div class="card-body" style="border-top: 1px solid #F1F1F1;">
                 <h5 class="card-title"><a href="/projects/{{this._id}}">{{this.title}}</a></h5>
                 <p class="card-text">{{this.shortdesc}}</p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><strong>Made for</strong> {{this.class}}</li>
-                <li class="list-group-item"><strong>Uses</strong> {{this.tech}}</li>
+                <li class="list-group-item"><span style="font-weight:500">Made for</span> {{this.class}}</li>
+                <li class="list-group-item"><span style="font-weight:500">Tech:</span> {{this.tech}}</li>
             </ul>
             <div class="card-body">
                 <a href="{{this.live}}" class="card-link">View Live</a>
