@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const port = process.env.PORT || 3000;
 const Project = require('./models/project');
+const Comment = require('./models/comment');
 
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(methodOverride('_method'));
 
 // ROUTES
 const projects = require('./controllers/projects')(app);
+const comments = require('./controllers/comments')(app);
 
 // SERVER
 app.listen(port);

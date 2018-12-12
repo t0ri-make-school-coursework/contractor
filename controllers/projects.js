@@ -1,4 +1,5 @@
 const Project = require("../models/project");
+const Comment = require('../models/comment');
 
 
 module.exports = function(app) {
@@ -35,9 +36,11 @@ module.exports = function(app) {
     app.get('/projects/:id', (req, res) => {
       // find project
       Project.findById(req.params.id).then(project => {
-        // fetch its comments
-          // respond with the template with both values
-          res.render('projects-show', { project: project })
+          // fetch its comments
+          Comment.find({ projectId: req.params.id }).then(comments => {
+            // respond with the template with both values
+            res.render('projects-show', { project: project, comments: comments })
+          })
       }).catch((err) => {
         // catch errors
         console.log(err.message)
