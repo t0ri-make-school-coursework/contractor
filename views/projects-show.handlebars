@@ -16,11 +16,10 @@
             <br /><br />
 
             <a href="{{project.live}}"><button type="button" class="btn btn-outline-primary">View Live</button></a>
-            <a href="{{project.github}}"><button type="button" class="btn btn-outline-primary">View on Github</button></a>
+            <a href="{{project.repo}}"><button type="button" class="btn btn-outline-primary">View on Github</button></a>
 
             <div class="admin" style="margin-top:50px;">
                 <p><a href="/projects/{{project._id}}/edit">Edit</a></p>
-
             </div>
 
             {{> comment-form}}
@@ -32,6 +31,6 @@
             {{#each comments}}
                 {{> comment}}
             {{/each}}
-            
+
     </div>
 </div>
