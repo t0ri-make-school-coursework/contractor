@@ -1,11 +1,11 @@
-<div class="card">
-  <div class="card">
+<div class="card" style="margin-bottom:10px;">
+  <div class="card-body">
     <h4 class="card-title">{{this.title}}</h4>
-    <p class="card-text"><strong>{{this.user}}</strong></p>
+    <p class="card-text" style="margin-top:-10px; font-size:.8em;">{{this.user}}</p>
     <p class="card-text">{{this.content}}</p>
     <!-- Delete link -->
-    <p><form method="POST" action="/projects/comments/{{this._id}}?_method=DELETE">
-        <button class="btn btn-link" type="submit">Delete</button>
-    </form></p>
+    <form method="POST" action="/projects/comments/{{this._id}}?_method=DELETE">
+        <button class="btn btn-link" type="submit" style="margin-left:-13px">Delete</button>
+    </form>
   </div>
 </div>

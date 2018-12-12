@@ -4,7 +4,7 @@ module.exports = (app) => {
 
     app.post('/projects/comments', (req, res) =>  {
         Comment.create(req.body).then(comment => {
-            res.redirect(`/projects/${comment.projectID}`);
+            res.redirect(`/projects/${project.projectID}`);
             console.log(comment);
         }).catch((err) => {
             console.log(err.message);
