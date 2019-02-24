@@ -88,4 +88,14 @@ module.exports = function(app) {
         })
     })
 
+     // API
+     app.get('/api/projects', (req, res) => {
+        Project.find()
+            .then(projects => {
+                res.json({ projects: projects });
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    })
 }
